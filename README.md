@@ -1,6 +1,6 @@
 # currency_converter
 
-A new Flutter project.
+This repository holds the currency converter app that I build with flutter as part of learning flutter
 
 ## Getting Started
 
