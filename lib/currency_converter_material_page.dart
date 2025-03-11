@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
@@ -18,6 +19,19 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        title: Text(
+          "Currency Converter",
+          style: TextStyle(
+            color: Colors.white70,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        actions: [Text("Hello")],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,8 +43,9 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            Padding(
-              padding: EdgeInsets.all(10),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              margin: EdgeInsets.only(top: 3.0),
               child: TextField(
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -48,6 +63,38 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
               ),
             ),
+            // button
+
+            // raised / now its called Elevated Button
+            // appears like a text
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(13, 7, 13, 7),
+              child: ElevatedButton(
+                onPressed: () {
+                  // debug, release, profile(run in release mode but can view debug logs)
+                  if (kDebugMode) {
+                    print('button Clicked');
+                  }
+                },
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.black),
+                  foregroundColor: WidgetStatePropertyAll(Colors.white),
+                  minimumSize: WidgetStatePropertyAll(
+                    Size(double.infinity, 50),
+                  ),
+                  elevation: WidgetStatePropertyAll(10),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                child: Text('Convert'),
+              ),
+            )
           ],
         ),
       ),
