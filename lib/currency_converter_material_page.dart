@@ -1,11 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+// 1. create a variable to store the converted currency value
+// 2. Create a function that multiplies the value given by the the text field with rate
+// 3. Store the value in the variable that we created
+// 4. Display the value/variable
+
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double results = 0;
+    final TextEditingController textEditingController = TextEditingController();
     // dont put too complex tasks in build, like async or timer
     // build should have the widget tree to display thats all
     final border = OutlineInputBorder(
@@ -30,14 +37,13 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions: [Text("Hello")],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '0',
+              results.toString(),
               style: TextStyle(
                   fontSize: 55,
                   fontWeight: FontWeight.bold,
@@ -47,6 +53,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               margin: EdgeInsets.only(top: 3.0),
               child: TextField(
+                controller: textEditingController,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'Please enter the amount in MYR',
@@ -76,6 +83,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   if (kDebugMode) {
                     print('button Clicked');
                   }
+                  results = double.parse(textEditingController.text * 4);
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black),
